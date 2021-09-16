@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "330983105891",
+    "project_id": "ticket-rocket-seat",
+    "storage_bucket": "ticket-rocket-seat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330983105891:android:48e30b377c46880ce09f56",
+        "android_client_info": {
+          "package_name": "com.suraia.ticket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330983105891-4ccb8l4cj4kfothcv5qajaqr5duannvf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.suraia.ticket",
+            "certificate_hash": "64cf9f3a498fd86524003c94cfb233ca17304541"
+          }
+        },
+        {
+          "client_id": "330983105891-sa528g9ugq6fr0ojrn3qh1dqkh2u833a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNYkmKWP7KyJLcJ6NvoWPdKwJ4MqBQZN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330983105891-sa528g9ugq6fr0ojrn3qh1dqkh2u833a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

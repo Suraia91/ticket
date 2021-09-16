@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ticket/data/controller/auth_controller.dart';
 import 'package:ticket/data/utility/res.dart';
 
 class SplashPage extends StatelessWidget {
@@ -6,6 +7,8 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authController = AuthController();
+    authController.currentUser(context);
     return Scaffold(
       backgroundColor: AppResources.background,
       body: Stack(
