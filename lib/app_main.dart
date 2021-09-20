@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ticket/modules/barcode_scanner/scanner_page.dart';
 import 'package:ticket/modules/home/home_page.dart';
 import 'package:ticket/modules/splash.dart';
 import 'data/utility/res.dart';
@@ -14,11 +15,12 @@ class AppWidget extends StatelessWidget {
         primaryColor: AppResources.primary,
       ),
       home: LoginPage(),
-      initialRoute: "/home",
+      initialRoute: "/splash",
       routes: {
         "/home": (context) => HomePage(),
         "/login": (context) => LoginPage(),
-        "/splash": (context) => SplashPage()
+        "/splash": (context) => SplashPage(),
+        "/barcode_scanner": (context) => ScannerPage()
       },
     );
   }
