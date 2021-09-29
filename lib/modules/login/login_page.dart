@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ticket/data/utility/res.dart';
-import 'package:ticket/data/utility/socila_login.dart';
+import 'package:ticket/data/utility/social_login.dart';
 import 'package:ticket/data/controller/login_controller.dart';
 
 class LoginPage extends StatefulWidget {

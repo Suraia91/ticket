@@ -1,6 +1,6 @@
 class HomeController {
   var currentPage = 0;
-  void setPage(int isdex) {
-    currentPage = isdex;
+  void setPage(int index) {
+    currentPage = index;
   }
 }

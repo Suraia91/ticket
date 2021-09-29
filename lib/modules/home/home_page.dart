@@ -73,7 +73,9 @@ class _HomePageState extends State<HomePage> {
                 )),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, "/barcode_scanner");
+                Navigator.pushReplacementNamed(context, '/insert_bolet');
+
+                // Navigator.pushNamed(context, "/barcode_scanner");
                 print('rota');
               },
               child: Container(
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage> {
             ),
             IconButton(
                 onPressed: () {
-                  controller.setPage(2);
+                  controller.setPage(1);
                 },
                 icon: Icon(
                   Icons.description_outlined,
