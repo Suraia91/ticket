@@ -29,11 +29,11 @@ class InputTextWidget extends StatelessWidget {
             initialValue: initalValue,
             validator: validator,
             onChanged: onChanged,
-            style: TextStyles.input,
+            style: AppResources.inputs,
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.zero,
                 labelText: label,
-                labelStyle: TextStyles.input,
+                labelStyle: AppResources.inputs,
                 icon: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.pushReplacementNamed(context, '/insert_bolet');
 
-                // Navigator.pushNamed(context, "/barcode_scanner");
+                //  Navigator.pushNamed(context, "/barcode_scanner");
                 print('rota');
               },
               child: Container(

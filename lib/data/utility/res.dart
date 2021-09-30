@@ -131,6 +131,11 @@ class AppResources {
     fontWeight: FontWeight.w600,
     color: body,
   );
+  static final inputs = GoogleFonts.inter(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: input,
+  );
 
 //resource images
 

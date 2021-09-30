@@ -43,7 +43,7 @@ class _ScannerPageState extends State<ScannerPage> {
           ValueListenableBuilder<BarcodeStatus>(
             valueListenable: controller.statusNotifier,
             builder: (_, status, __) {
-              if (status.showCamera) {
+              if (!status.showCamera) {
                 return Container(
                   child: controller.cameraController!.buildPreview(),
                 );
@@ -75,7 +75,7 @@ class _ScannerPageState extends State<ScannerPage> {
                   Expanded(
                       flex: 2,
                       child: Container(
-                        color: Colors.white,
+                        color: Colors.black.withOpacity(0.6),
                       )),
                   Expanded(
                       child: Container(
