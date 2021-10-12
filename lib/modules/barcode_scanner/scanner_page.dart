@@ -19,7 +19,8 @@ class _ScannerPageState extends State<ScannerPage> {
     controller.getAvailableCameras();
     controller.statusNotifier.addListener(() {
       if (controller.status.hasBarcode) {
-        Navigator.pushReplacementNamed(context, '/insert_bolet');
+        Navigator.pushReplacementNamed(context, '/insert_bolet',
+            arguments: controller.status.barcode);
       }
     });
     super.initState();
@@ -43,8 +44,9 @@ class _ScannerPageState extends State<ScannerPage> {
           ValueListenableBuilder<BarcodeStatus>(
             valueListenable: controller.statusNotifier,
             builder: (_, status, __) {
-              if (!status.showCamera) {
+              if (status.showCamera) {
                 return Container(
+                  color: Colors.blue,
                   child: controller.cameraController!.buildPreview(),
                 );
               } else {
@@ -86,26 +88,31 @@ class _ScannerPageState extends State<ScannerPage> {
               bottomNavigationBar: SetLabelButtons(
                   primaryLabel: 'Insira o codigo',
                   primaryOnPressed: () {
-                    Navigator.pushReplacementNamed(context, '/insert_bolet');
+                    controller.status = BarcodeStatus.error("Error");
                   },
                   secondaryLabel: 'Buscar na galeria',
-                  secondaryOnPressed: () {}),
+                  secondaryOnPressed: () {
+                    controller.scanWithImagePicker();
+                  }),
             ),
           ),
           ValueListenableBuilder<BarcodeStatus>(
             valueListenable: controller.statusNotifier,
             builder: (_, status, __) {
-              if (status.showCamera) {
-                return BottomSheets(
-                  title: 'Nao foi possivel identificar um codigo de barras',
-                  subTitle: 'Tente escanear novamente ou digite o seu codigo',
-                  primaryLabel: 'Escanear novamente',
-                  primaryOnPressed: () {
-                    controller.scanWithCamera();
-                  },
-                  secondaryLabel: 'Insira o código',
-                  secondaryOnPressed: () {},
-                );
+              if (status.hasError) {
+                return Align(
+                    alignment: Alignment.bottomLeft,
+                    child: BottomSheets(
+                      title: 'Nao foi possivel identificar um codigo de barras',
+                      subTitle:
+                          'Tente escanear novamente ou digite o seu codigo',
+                      primaryLabel: 'Escanear novamente',
+                      primaryOnPressed: () {
+                        controller.scanWithCamera();
+                      },
+                      secondaryLabel: 'Insira o código',
+                      secondaryOnPressed: () {},
+                    ));
               } else {
                 return Container();
               }

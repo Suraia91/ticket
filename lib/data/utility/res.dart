@@ -11,6 +11,7 @@ class AppResources {
   static final shapeItems = Color(0xFFFAFAFC);
   static final backgroundItems = Color(0xFFFFFFFF);
   static final input = Color(0xFFB1B0B8);
+  static final secundary = Color(0xFF585666);
 
   static final primary = Color(0xFFFF941A);
   static final grey = Color(0xFF585666);

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ticket/data/controller/home_controller.dart';
+import 'package:ticket/data/models/user_models.dart';
 import 'package:ticket/data/utility/res.dart';
-import 'package:ticket/data/utility/res.dart';
+import 'package:ticket/modules/extracts/extracts_page.dart';
+import 'package:ticket/modules/mybolets/mybolets_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final UserModel user;
+  const HomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -12,14 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
-  final pages = [
-    Container(
-      color: Colors.red,
-    ),
-    Container(
-      color: Colors.blue,
-    )
-  ];
+  final pages = [MyBoletsPage(), ExtractsPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                     style: AppResources.titleRegular,
                     children: [
                       TextSpan(
-                          text: 'Suraia',
+                          text: '${widget.user.name}',
                           style: AppResources.titleBoldBackground)
                     ]),
               ),
@@ -49,7 +45,9 @@ class _HomePageState extends State<HomePage> {
                 width: 48.0,
                 decoration: BoxDecoration(
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(5)),
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                        image: NetworkImage(widget.user.photourl!))),
               ),
             ),
           ),
@@ -69,14 +67,14 @@ class _HomePageState extends State<HomePage> {
                 },
                 icon: Icon(
                   Icons.home,
-                  color: AppResources.primary,
+                  color: controller.currentPage == 0
+                      ? AppResources.primary
+                      : AppResources.body,
                 )),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/insert_bolet');
-
-                //  Navigator.pushNamed(context, "/barcode_scanner");
-                print('rota');
+                // Navigator.pushReplacementNamed(context, '/insert_bolet');
+                Navigator.pushNamed(context, "/barcode_scanner");
               },
               child: Container(
                   height: 56,
@@ -92,10 +90,13 @@ class _HomePageState extends State<HomePage> {
             IconButton(
                 onPressed: () {
                   controller.setPage(1);
+                  setState(() {});
                 },
                 icon: Icon(
                   Icons.description_outlined,
-                  color: AppResources.body,
+                  color: controller.currentPage == 1
+                      ? AppResources.primary
+                      : AppResources.body,
                 )),
           ],
         ),

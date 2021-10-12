@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ticket/data/models/user_models.dart';
 import 'package:ticket/modules/barcode_scanner/scanner_page.dart';
 import 'package:ticket/modules/home/home_page.dart';
 import 'package:ticket/modules/insert_bolet/inser_boletpage.dart';
@@ -26,11 +27,17 @@ class AppWidget extends StatelessWidget {
       home: LoginPage(),
       initialRoute: "/splash",
       routes: {
-        "/home": (context) => HomePage(),
+        "/home": (context) => HomePage(
+              user: ModalRoute.of(context)!.settings.arguments as UserModel,
+            ),
         "/login": (context) => LoginPage(),
         "/splash": (context) => SplashPage(),
         "/barcode_scanner": (context) => ScannerPage(),
-        "/insert_bolet": (context) => InsertBoletPage()
+        "/insert_bolet": (context) => InsertBoletPage(
+              barcode: ModalRoute.of(context) != null
+                  ? ModalRoute.of(context)!.settings.arguments.toString()
+                  : null,
+            )
       },
     );
   }
