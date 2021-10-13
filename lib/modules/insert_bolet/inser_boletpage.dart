@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,19 +19,22 @@ class InsertBoletPage extends StatefulWidget {
 }
 
 class _InsertBoletPageState extends State<InsertBoletPage> {
+  FirebaseMessaging fm = FirebaseMessaging.instance;
+
   final controller = InsertBoletoController();
-  final controllers = AuthController();
 
   final moneyInputTextController =
       MoneyMaskedTextController(leftSymbol: "Kz\$", decimalSeparator: ",");
   final dueDateInputController = MaskedTextController(mask: "00/00/0000");
   final barcodeInputTextController = TextEditingController();
-
+  var token;
   @override
   void initState() {
+    fm.getToken().then((value) => token = value);
     if (widget.barcode != null) {
       barcodeInputTextController.text = widget.barcode!;
     }
+    print('token$token');
     super.initState();
   }
 
@@ -116,7 +120,8 @@ class _InsertBoletPageState extends State<InsertBoletPage> {
           },
           secondaryLabel: 'Cadastrar',
           secondaryOnPressed: () async {
-            await controller.cadastrar();
+            //  await controller.cadastrar();
+            await controller.saveToFs(token);
           }),
     );
   }
