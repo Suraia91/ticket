@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket/data/controller/bolet_list_controller.dart';
 import 'package:ticket/data/models/bolet_models.dart';
@@ -16,7 +17,7 @@ class _MyBoletsPageState extends State<MyBoletsPage> {
   final controller = BoletoListController();
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         Stack(
           children: [
@@ -29,7 +30,9 @@ class _MyBoletsPageState extends State<MyBoletsPage> {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: ValueListenableBuilder<List<BoletoModel>>(
                 valueListenable: controller.boletNotifier,
-                builder: (_, bolet, __) => BoletoInfoWidget(size: bolet.length),
+                builder: (_, bolet, __) => AnimatedCard(
+                    direction: AnimatedCardDirection.top,
+                    child: BoletoInfoWidget(size: bolet.length)),
               ),
             ),
           ],

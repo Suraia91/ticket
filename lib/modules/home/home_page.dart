@@ -15,7 +15,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
-  final pages = [MyBoletsPage(), ExtractsPage()];
+  final pages = [
+    MyBoletsPage(key: UniqueKey()),
+    ExtractsPage(key: UniqueKey())
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,49 +58,56 @@ class _HomePageState extends State<HomePage> {
       ),
       body: pages[controller.currentPage],
       bottomNavigationBar: Container(
-        height: 90,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        height: 80,
+        child: Column(
           children: [
-            IconButton(
-                onPressed: () {
-                  setState(() {
-                    controller.setPage(0);
-                  });
-                },
-                icon: Icon(
-                  Icons.home,
-                  color: controller.currentPage == 0
-                      ? AppResources.primary
-                      : AppResources.body,
-                )),
-            GestureDetector(
-              onTap: () {
-                // Navigator.pushReplacementNamed(context, '/insert_bolet');
-                Navigator.pushNamed(context, "/barcode_scanner");
-              },
-              child: Container(
-                  height: 56,
-                  width: 56,
-                  decoration: BoxDecoration(
-                      color: AppResources.primary,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Icon(
-                    Icons.add_box_outlined,
-                    color: AppResources.background,
-                  )),
+            Divider(
+              color: Colors.grey,
             ),
-            IconButton(
-                onPressed: () {
-                  controller.setPage(1);
-                  setState(() {});
-                },
-                icon: Icon(
-                  Icons.description_outlined,
-                  color: controller.currentPage == 1
-                      ? AppResources.primary
-                      : AppResources.body,
-                )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      setState(() {
+                        controller.setPage(0);
+                      });
+                    },
+                    icon: Icon(
+                      Icons.home,
+                      color: controller.currentPage == 0
+                          ? AppResources.primary
+                          : AppResources.body,
+                    )),
+                GestureDetector(
+                  onTap: () {
+                    // Navigator.pushReplacementNamed(context, '/insert_bolet');
+                    Navigator.pushNamed(context, "/barcode_scanner");
+                  },
+                  child: Container(
+                      height: 56,
+                      width: 56,
+                      decoration: BoxDecoration(
+                          color: AppResources.primary,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Icon(
+                        Icons.add_box_outlined,
+                        color: AppResources.background,
+                      )),
+                ),
+                IconButton(
+                    onPressed: () {
+                      controller.setPage(1);
+                      setState(() {});
+                    },
+                    icon: Icon(
+                      Icons.description_outlined,
+                      color: controller.currentPage == 1
+                          ? AppResources.primary
+                          : AppResources.body,
+                    )),
+              ],
+            ),
           ],
         ),
       ),

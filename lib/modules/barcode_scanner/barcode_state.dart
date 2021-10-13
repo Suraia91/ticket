@@ -26,4 +26,19 @@ class BarcodeStatus {
   bool get hasError => error.isNotEmpty;
 
   bool get hasBarcode => barcode.isNotEmpty;
+
+  BarcodeStatus copyWith({
+    bool? isAvailable,
+    String? error,
+    String? barcode,
+    bool? stopScanner,
+    CameraController? cameraController,
+  }) {
+    return BarcodeStatus(
+      isCameraAvailable: isAvailable ?? this.isCameraAvailable,
+      error: error ?? this.error,
+      barcode: barcode ?? this.barcode,
+      stopScanner: stopScanner ?? this.stopScanner,
+    );
+  }
 }

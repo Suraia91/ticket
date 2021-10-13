@@ -14,34 +14,36 @@ class _ExtractsPageState extends State<ExtractsPage> {
   final controller = BoletoListController();
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 24.0, left: 24, right: 24),
-          child: Row(
-            children: [
-              Text(
-                'My extracts',
-                style: AppResources.titleBoldHeading,
-              ),
-            ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 24.0, left: 24, right: 24),
+            child: Row(
+              children: [
+                Text(
+                  'My extracts',
+                  style: AppResources.titleBoldHeading,
+                ),
+              ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 24),
-          child: Divider(
-            color: AppResources.stroke,
-            thickness: 1,
-            height: 1,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 24),
+            child: Divider(
+              color: AppResources.stroke,
+              thickness: 1,
+              height: 1,
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: BoletoListWidget(
-            controller: controller,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: BoletoListWidget(
+              controller: controller,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

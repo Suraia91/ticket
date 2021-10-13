@@ -28,7 +28,7 @@ class BoletoInfoWidget extends StatelessWidget {
               color: AppResources.background,
             ),
             Text.rich(TextSpan(
-                text: "Existe",
+                text: "Existe ",
                 style: AppResources.captionBackground,
                 children: [
                   TextSpan(

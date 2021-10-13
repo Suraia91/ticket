@@ -111,7 +111,10 @@ class _ScannerPageState extends State<ScannerPage> {
                         controller.scanWithCamera();
                       },
                       secondaryLabel: 'Insira o código',
-                      secondaryOnPressed: () {},
+                      secondaryOnPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, '/insert_bolet');
+                      },
                     ));
               } else {
                 return Container();

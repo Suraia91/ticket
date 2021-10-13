@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -56,13 +57,17 @@ class _LoginPageState extends State<LoginPage> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 40, top: 40, right: 40),
-                    child: SocialLoginButton(
-                      onTap: () {
-                        controller.googleSignIn(context);
-                      },
+                  AnimatedCard(
+                    direction: AnimatedCardDirection.bottom,
+                    duration: Duration(milliseconds: 1000),
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 40, top: 40, right: 40),
+                      child: SocialLoginButton(
+                        onTap: () {
+                          controller.googleSignIn(context);
+                        },
+                      ),
                     ),
                   )
                 ],
