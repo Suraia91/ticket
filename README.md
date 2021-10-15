@@ -20,9 +20,7 @@ Actualmete aumentei o desafio para:
 
 Confira o projecto finalizado:
 
-
-
-![Splash screen]<img src="/screens/splash.png" width="200" height="500"> 
+<img src="/screens/splash.png" width="300" height="500"> 
 
 
 
