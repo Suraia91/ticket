@@ -14,12 +14,14 @@ Inicalmente o desafio eram os listados abaixo:
 
 # Criar uma UI interativa
 # Fazer login com google
-# Conectar a app com firebase.
+# Conectar a app com firebase
+# Usar SharedPreferences.
+# GoogleMLK para scanear codigo de barras
 
 Actualmete aumentei o desafio para:
 
 # Usar Firestore para salvar os dados em uma DB remota.
-# Rodar na versao IOS
+# Rodar na versão IOS
 
 Confira o projecto finalizado:
 
