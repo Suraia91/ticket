@@ -1,6 +1,9 @@
 
 ## Ticket
 
+@gabuldev
+@rocketseat-education
+
 
 Projecto em flutter para controlar os bolotos bancarios,
 um desafio em uma 
