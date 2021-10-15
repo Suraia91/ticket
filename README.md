@@ -3,7 +3,8 @@
 
 
 Projecto em flutter para controlar os bolotos bancarios,
-um desafio em uma # NLW do rocket-seat.
+um desafio em uma 
+# NLW do rocket-seat.
 
 Este projecto apresenta desafios como:
 
