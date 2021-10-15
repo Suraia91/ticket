@@ -26,6 +26,6 @@ Confira o projecto finalizado:
 <img src="/screens/splash.png" width="300" height="500"> <img src="/screens/login.png" width="300" height="500"> <img src="/screens/mybolet.png" width="300" height="500"> 
 
 
-@ gabuldev
-@ rocketseat-education
+@gabuldev
+@rocketseat-education
 
