@@ -22,5 +22,8 @@ Confira o projecto finalizado:
 
 
 
+![Splash screen](/screens/splash.png)
+
+
 
 
