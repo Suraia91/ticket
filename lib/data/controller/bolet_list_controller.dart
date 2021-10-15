@@ -52,7 +52,6 @@ class BoletoListController {
       movies.forEach((element) {
         bolet.add(element.data());
       });
-      print(bolet);
     } else {
       print('n tem dados');
     }
