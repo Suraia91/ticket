@@ -22,7 +22,7 @@ Confira o projecto finalizado:
 
 
 
-![Splash screen](/screens/splash.png)
+![Splash screen]<img src="/screens/splash.png" width="200" height="500"> 
 
 
 
