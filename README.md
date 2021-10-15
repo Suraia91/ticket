@@ -20,7 +20,7 @@ Actualmete aumentei o desafio para:
 
 Confira o projecto finalizado:
 
-<img src="/screens/splash.png" width="300" height="500"> <img src="/screens/login.png" width="300" height="500"><img src="/screens/mybolet.png" width="300" height="500"> 
+<img src="/screens/splash.png" width="300" height="500"> <img src="/screens/login.png" width="300" height="500"> <img src="/screens/mybolet.png" width="300" height="500"> 
 
 
 
