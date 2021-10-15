@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class BoletoModel {
   final String? name;
   final String? dueDate;
@@ -35,19 +37,28 @@ class BoletoModel {
     };
   }
 
-  factory BoletoModel.fromMap(Map<String, dynamic> map) {
+  factory BoletoModel.fromJson(Map<String, Object?> map) {
     return BoletoModel(
-      name: map['name'],
-      dueDate: map['dueDate'],
-      value: map['value'],
-      barcode: map['barcode'],
+      name: map['name'] as String,
+      dueDate: map['dueDate'] as String,
+      value: map['value'] as double,
+      barcode: map['barcode'] as String,
     );
   }
+  Map<String, Object?> toJson() {
+    return {
+      'name': name,
+      'dueDate': dueDate,
+      'value': value,
+      'barcode': barcode,
+    };
+  }
+  // String toJson() => json.encode(toMap());
 
-  String toJson() => json.encode(toMap());
+  //Map<String, dynamic> toJson() => _boletoToJson(this);
 
-  factory BoletoModel.fromJson(String source) =>
-      BoletoModel.fromMap(json.decode(source));
+  // factory BoletoModel.fromJson(String source) =>
+  //     BoletoModel.fromMap(json.decode(source));
 
   @override
   String toString() {

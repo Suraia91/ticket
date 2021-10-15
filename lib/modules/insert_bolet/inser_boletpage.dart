@@ -2,13 +2,10 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ticket/data/controller/auth_controller.dart';
 import 'package:ticket/data/controller/insert_bolet_controller.dart';
-import 'package:ticket/data/models/bolet_models.dart';
 import 'package:ticket/data/utility/res.dart';
 import 'package:ticket/modules/components/input_text_widget.dart';
 import 'package:ticket/modules/components/set_label_button.dart';
-import 'package:ticket/modules/home/home_page.dart';
 
 class InsertBoletPage extends StatefulWidget {
   final String? barcode;
@@ -34,7 +31,7 @@ class _InsertBoletPageState extends State<InsertBoletPage> {
     if (widget.barcode != null) {
       barcodeInputTextController.text = widget.barcode!;
     }
-    print('token$token');
+    print('token $token');
     super.initState();
   }
 
@@ -121,7 +118,7 @@ class _InsertBoletPageState extends State<InsertBoletPage> {
           secondaryLabel: 'Cadastrar',
           secondaryOnPressed: () async {
             //  await controller.cadastrar();
-            await controller.saveToFs(token);
+            await controller.saveToFs(context);
           }),
     );
   }

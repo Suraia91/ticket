@@ -7,9 +7,11 @@ class AuthController {
 
   UserModel get user => _user!;
 
-  void setUser(BuildContext context, UserModel? user) {
+  void setUser(BuildContext context, UserModel? user) async {
     if (user != null) {
       _user = user;
+      final instance = await SharedPreferences.getInstance();
+      await instance.setString('mail', user.mail);
       Navigator.pushReplacementNamed(context, '/home', arguments: user);
     } else {
       Navigator.pushReplacementNamed(context, '/login');

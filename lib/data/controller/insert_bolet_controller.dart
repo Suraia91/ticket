@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ticket/data/models/bolet_models.dart';
 
-class InsertBoletoController extends StatelessWidget {
+class InsertBoletoController {
   final firestoreInstance = FirebaseFirestore.instance;
   FirebaseMessaging fm = FirebaseMessaging.instance;
 
@@ -32,7 +32,7 @@ class InsertBoletoController extends StatelessWidget {
     try {
       final instance = await SharedPreferences.getInstance();
       final boletos = instance.getStringList("boletos") ?? <String>[];
-      boletos.add(model.toJson());
+      // boletos.add(model.toJson());
       await instance.setStringList("boletos", boletos);
       return;
     } catch (e) {}
@@ -45,7 +45,9 @@ class InsertBoletoController extends StatelessWidget {
     }
   }
 
-  Future<void> saveToFs(String? token) async {
+  Future<void> saveToFs(BuildContext context) async {
+    final instance = await SharedPreferences.getInstance();
+    final mailKey = instance.getString("mail");
     final form = formKey.currentState;
     //await Firebase.initializeApp();
     // sync token to server
@@ -54,17 +56,13 @@ class InsertBoletoController extends StatelessWidget {
     if (form!.validate()) {
       firestoreInstance
           .collection('boletos')
-          .doc(token)
+          .doc(mailKey)
           .collection('ticket')
           .doc()
           .set(model.toMap())
-          .then((value) => print('sucess'));
+          .then((value) {
+        print('sucess');
+      });
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
   }
 }

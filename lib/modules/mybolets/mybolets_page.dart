@@ -5,6 +5,7 @@ import 'package:ticket/data/models/bolet_models.dart';
 import 'package:ticket/data/utility/res.dart';
 import 'package:ticket/modules/components/bolet_info.dart';
 import 'package:ticket/modules/components/bolet_list.dart';
+import 'package:ticket/modules/components/bolet_tile.dart';
 
 class MyBoletsPage extends StatefulWidget {
   const MyBoletsPage({Key? key}) : super(key: key);
@@ -15,6 +16,12 @@ class MyBoletsPage extends StatefulWidget {
 
 class _MyBoletsPageState extends State<MyBoletsPage> {
   final controller = BoletoListController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -28,12 +35,9 @@ class _MyBoletsPageState extends State<MyBoletsPage> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: ValueListenableBuilder<List<BoletoModel>>(
-                valueListenable: controller.boletNotifier,
-                builder: (_, bolet, __) => AnimatedCard(
-                    direction: AnimatedCardDirection.top,
-                    child: BoletoInfoWidget(size: bolet.length)),
-              ),
+              child: AnimatedCard(
+                  direction: AnimatedCardDirection.top,
+                  child: BoletoInfoWidget(size: controller.bolet.length)),
             ),
           ],
         ),
@@ -56,13 +60,68 @@ class _MyBoletsPageState extends State<MyBoletsPage> {
             height: 1,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: BoletoListWidget(
-            controller: controller,
-          ),
+        Container(
+          child: FutureBuilder(
+              future: controller.getFirebaseBolets(),
+              builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.none:
+                  case ConnectionState.waiting:
+                    return Center(
+                      child: CircularProgressIndicator(
+                          backgroundColor: Colors.black),
+                    );
+                  default:
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          'Erro ao carregar os dados',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return ticketWidget(controller.bolet);
+                    }
+                }
+              }),
         ),
       ],
     );
+  }
+
+  Widget ticketWidget(List<BoletoModel> boleto) {
+    List<BoletoModel> bolet = boleto;
+    return bolet.length == 0
+        ? Center(
+            child: Text(
+              "Sem boletos",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          )
+        : ListView.builder(
+            shrinkWrap: true,
+            itemCount: bolet.length,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) {
+              //itemBuilder: (BuildContext ctx, int index) {
+              return GestureDetector(
+                child: BoletoTileWidget(data: bolet[index]),
+                onTap: () {
+                  // method to go to another page passing category position
+                  // Get.to();
+                },
+              );
+            },
+          );
   }
 }
